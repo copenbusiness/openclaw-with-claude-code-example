@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.1"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd">
+    <persistence-unit name="SalesUserPU" transaction-type="JTA">
+        <description>Persistence unit for Sales User Management</description>
+        <jta-data-source>jdbc/salesUserDB</jta-data-source>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
+            <property name="jakarta.persistence.sql-dialect" value="org.hibernate.dialect.DB2Dialect"/>
+            <!-- DB2 specific properties -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.ibm.db2.jcc.DB2Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:db2://localhost:50000/SALESDB"/>
+            <property name="jakarta.persistence.jdbc.user" value="db2inst1"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <!-- Hibernate properties (if using Hibernate as JPA provider) -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>

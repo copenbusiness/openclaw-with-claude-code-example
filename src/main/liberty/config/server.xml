@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="Open Liberty Server">
+
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>jdbc-4.3</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443" />
+
+    <dataSource id="salesUserDB" jndiName="jdbc/salesUserDB">
+        <jdbcDriver libraryRef="DB2Lib"/>
+        <properties.db2.jcc databaseName="SALESDB"
+                            serverName="localhost"
+                            portNumber="50000"
+                            user="db2inst1"
+                            password="password"/>
+    </dataSource>
+
+    <library id="DB2Lib">
+        <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
+    </library>
+
+</server>
